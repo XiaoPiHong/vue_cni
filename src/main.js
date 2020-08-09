@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-08-09 13:47:05
- * @LastEditTime: 2020-08-09 14:23:27
+ * @LastEditTime: 2020-08-09 15:52:57
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\main.js
@@ -13,7 +13,8 @@ import Vue from 'vue';
 import app from './App.vue';
 
 //导入 MUI的样式
-import './lib/mui/css/mui.min.css'
+import './lib/mui/css/mui.min.css';
+import './lib/mui/css/icons-extra.css';
 
 //按需导入Mint-UI 中的组件
 import {
