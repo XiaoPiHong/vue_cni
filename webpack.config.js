@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2020-08-09 13:47:05
- * @LastEditTime: 2020-08-09 13:55:31
- * @LastEditors: your name
+ * @LastEditTime: 2020-08-09 16:46:16
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\webpack.config.js
  */
@@ -32,14 +32,14 @@ module.exports = {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']
             }, //处理 css 文件的loader
-            /*   {
-                  test: /\.less$/,
-                  use: ['style-loader', 'css-loader', 'less-loader']
-              }, //处理 less 文件的loader
-              {
-                  test: /\.scss$/,
-                  use: ['style-loader', 'css-loader', 'sass-loader']
-              }, //处理 scss 文件的loader */
+            {
+                test: /\.less$/,
+                use: ['style-loader', 'css-loader', 'less-loader']
+            }, //处理 less 文件的loader
+            {
+                test: /\.scss$/,
+                use: ['style-loader', 'css-loader', 'sass-loader']
+            }, //处理 scss 文件的loader
             {
                 test: /\.(jpg|png|gif|bmp|jpeg)$/,
                 use: 'url-loader?limit=7631&name=[hash:8]-[name].[ext]'
