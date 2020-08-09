@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-08-09 13:47:05
- * @LastEditTime: 2020-08-09 16:47:54
+ * @LastEditTime: 2020-08-09 17:18:52
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\main.js
@@ -13,6 +13,13 @@ import VueRouter from 'vue-router';
 // 1.2 安装路由
 Vue.use(VueRouter);
 
+
+
+
+// 2.1 导入 vue-resource
+import VueResource from 'vue-resource';
+// 2.2 安装 vue-resource
+Vue.use(VueResource);
 
 
 //导入 MUI的样式

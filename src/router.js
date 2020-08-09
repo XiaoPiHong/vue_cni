@@ -1,23 +1,21 @@
 /*
  * @Author: your name
  * @Date: 2020-08-09 13:47:05
- * @LastEditTime: 2020-08-09 16:25:24
+ * @LastEditTime: 2020-08-09 19:08:15
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\router.js
  */
-//路由入口文件
-
-
-
+// 路由入口文件
+// 导入路由的包
 import VueRouter from 'vue-router';
 
 
 // 导入对应的路由组件
-import HomeContainer from './components/tabbar/HomeContainer.vue'
-import MemberContainer from './components/tabbar/MemberContainer.vue'
-import ShopcarContainer from './components/tabbar/ShopcarContainer.vue'
-import SearchContainer from './components/tabbar/SearchContainer.vue'
+import HomeContainer from './components/tabbar/HomeContainer.vue';
+import MemberContainer from './components/tabbar/MemberContainer.vue';
+import ShopcarContainer from './components/tabbar/ShopcarContainer.vue';
+import SearchContainer from './components/tabbar/SearchContainer.vue';
 
 
 //创建路由对象
