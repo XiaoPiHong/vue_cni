@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-09 13:47:05
- * @LastEditTime: 2020-08-09 16:27:18
+ * @LastEditTime: 2020-08-10 08:29:35
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\App.vue
@@ -10,10 +10,12 @@
 <template>
   <div class="app-container">
     <!-- 顶部 Header 区域 -->
-    <mt-header fixed title="vue-中文资讯"></mt-header>
+    <mt-header fixed title="中文资讯"></mt-header>
 
     <!-- 中间的 路由 router-view 区域 -->
-    <router-view></router-view>
+    <transition>
+      <router-view></router-view>
+    </transition>
 
     <!-- 底部 Tabbar 区域 -->
     <nav class="mui-bar mui-bar-tab">
@@ -45,6 +47,25 @@
 <style lang="scss" scoped>
 .app-container {
   padding-top: 40px;
+  //横向上超过设备宽度隐藏
+  overflow-x: hidden;
+}
+
+.v-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+//设置离开动画是往左走
+.v-leave-to {
+  opacity: 0;
+  transform: translateX(-100%);
+  //定位解决了动画位置改变问题
+  position: absolute;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: all 0.5s ease;
 }
 </style>
 
