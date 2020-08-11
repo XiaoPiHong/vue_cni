@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-09 16:21:22
- * @LastEditTime: 2020-08-09 22:55:40
+ * @LastEditTime: 2020-08-11 23:31:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\components\tabbar\HomeContainer.vue
@@ -24,10 +24,10 @@
     <!-- 九宫格 到 6宫格 的改造工程 -->
     <ul class="mui-table-view mui-grid-view mui-grid-9">
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <a href="#">
+        <router-link to="/home/newslist">
           <img src="../../images/menu1.png" alt=" " />
           <div class="mui-media-body">新闻资讯</div>
-        </a>
+        </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
         <a href="#">
