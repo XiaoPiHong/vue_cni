@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-09 13:47:05
- * @LastEditTime: 2020-08-10 08:29:35
+ * @LastEditTime: 2020-08-12 23:14:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\App.vue
@@ -47,6 +47,7 @@
 <style lang="scss" scoped>
 .app-container {
   padding-top: 40px;
+  padding-bottom: 50px;
   //横向上超过设备宽度隐藏
   overflow-x: hidden;
 }

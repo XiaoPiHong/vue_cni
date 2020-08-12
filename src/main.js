@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-08-09 13:47:05
- * @LastEditTime: 2020-08-12 20:55:24
+ * @LastEditTime: 2020-08-12 23:21:17
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\main.js
@@ -14,6 +14,12 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 
+// 导入格式化时间的插件
+import moment from 'moment';
+// 定义全局的过滤器
+Vue.filter('dateFormat', function (dataStr, pattern = "YYYY-MM-DD HH:mm:ss") {
+    return moment(dataStr).format(pattern)
+});
 
 
 // 2.1 导入 vue-resource

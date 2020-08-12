@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-11 23:32:14
- * @LastEditTime: 2020-08-12 22:41:52
+ * @LastEditTime: 2020-08-12 23:21:01
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\components\news\NewsList.vue
@@ -18,7 +18,7 @@
           <div class="mui-media-body">
             <h1>{{item.title}}</h1>
             <p class="mui-ellipsis">
-              <span>发表时间：{{item.add_time}}</span>
+              <span>发表时间：{{new Date() | dateFormat }}</span>
               <span>点击：{{item.click}}次</span>
             </p>
           </div>
