@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-08-09 13:47:05
- * @LastEditTime: 2020-08-09 17:18:52
+ * @LastEditTime: 2020-08-12 20:55:24
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\main.js
@@ -20,6 +20,8 @@ Vue.use(VueRouter);
 import VueResource from 'vue-resource';
 // 2.2 安装 vue-resource
 Vue.use(VueResource);
+// 设置请求的根路径
+Vue.http.options.root = 'http://localhost:8888/Vue/vue_cni/php';
 
 
 //导入 MUI的样式

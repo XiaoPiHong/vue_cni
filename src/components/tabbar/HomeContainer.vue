@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-09 16:21:22
- * @LastEditTime: 2020-08-11 23:31:13
+ * @LastEditTime: 2020-08-12 20:52:41
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\components\tabbar\HomeContainer.vue
@@ -17,7 +17,7 @@
     <mt-swipe :auto="4000">
       <!-- 在组件中，使用v-for循环的话，一定要使用 key -->
       <mt-swipe-item v-for="item in lunbotuList" :key="item.url">
-        <img :src="item.url" alt=" " />
+        <img :src="item.url" />
       </mt-swipe-item>
     </mt-swipe>
 
@@ -25,37 +25,37 @@
     <ul class="mui-table-view mui-grid-view mui-grid-9">
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
         <router-link to="/home/newslist">
-          <img src="../../images/menu1.png" alt=" " />
+          <img src="../../images/menu1.png" />
           <div class="mui-media-body">新闻资讯</div>
         </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
         <a href="#">
-          <img src="../../images/menu2.png" alt=" " />
+          <img src="../../images/menu2.png" />
           <div class="mui-media-body">图片分享</div>
         </a>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
         <a href="#">
-          <img src="../../images/menu3.png" alt=" " />
+          <img src="../../images/menu3.png" />
           <div class="mui-media-body">商品购买</div>
         </a>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
         <a href="#">
-          <img src="../../images/menu4.png" alt=" " />
+          <img src="../../images/menu4.png" />
           <div class="mui-media-body">留言反馈</div>
         </a>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
         <a href="#">
-          <img src="../../images/menu5.png" alt=" " />
+          <img src="../../images/menu5.png" />
           <div class="mui-media-body">视频专区</div>
         </a>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
         <a href="#">
-          <img src="../../images/menu6.png" alt=" " />
+          <img src="../../images/menu6.png" />
           <div class="mui-media-body">联系我们</div>
         </a>
       </li>
@@ -74,24 +74,23 @@ export default {
       lunbotuList: [], // 保存轮播图的数组
     };
   },
+  //生命周期函数created的时候就调用getLunbotu()方法
   created() {
     this.getLunbotu();
   },
   methods: {
     getLunbotu() {
       // 获取轮播图数据的方法
-      this.$http
-        .get("http://localhost:8888/Vue/vue_cni/php/api/getlunbo.php")
-        .then((result) => {
-          // console.log(result.body);
-          if (result.body.status === 0) {
-            // 成功了
-            this.lunbotuList = result.body.message;
-          } else {
-            // 失败的
-            Toast("加载轮播图失败!");
-          }
-        });
+      this.$http.get("api/getlunbo.php").then((result) => {
+        // console.log(result.body);
+        if (result.body.status === 0) {
+          // 成功了
+          this.lunbotuList = result.body.message;
+        } else {
+          // 失败的
+          Toast("加载轮播图失败!");
+        }
+      });
     },
   },
 };
