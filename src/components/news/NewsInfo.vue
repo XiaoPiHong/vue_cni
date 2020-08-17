@@ -1,14 +1,24 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-17 09:25:13
- * @LastEditTime: 2020-08-17 09:48:42
+ * @LastEditTime: 2020-08-17 10:37:54
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\components\news\NewsInfo.vue
 -->
 <template>
-  <div>
-    <h3>新闻标题---{{id}}</h3>
+  <div class="newsinfo-container">
+    <!-- 大标题 -->
+    <h3 class="title">{{ newsinfo.title }}</h3>
+    <!-- 子标题 -->
+    <p class="subtitle">
+      <span>发表时间：{{ newsinfo.add_time | dateFormat }}</span>
+      <span>点击：{{ newsinfo.click }}次</span>
+    </p>
+    <hr />
+
+    <!-- 内容区域 -->
+    <div class="content" v-html="newsinfo.content"></div>
   </div>
 </template>
 <script>
@@ -16,8 +26,45 @@ export default {
   data() {
     return {
       id: this.$route.params.id, // 将 URL 地址中传递过来的 Id值，挂载到 data上，方便以后调用
+      newsinfo: {}, // 新闻对象
     };
+  },
+  created() {
+    this.getNewsInfo();
+  },
+  methods: {
+    getNewsInfo() {
+      // 获取新闻详情
+      this.$http.get("api/getnewsinfo.php?id=" + this.id).then((result) => {
+        if (result.body.status === 0) {
+          this.newsinfo = result.body.message;
+        } else {
+          Toast("获取新闻失败！");
+        }
+      });
+    },
   },
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.newsinfo-container {
+  padding: 0 4px;
+  .title {
+    font-size: 16px;
+    text-align: center;
+    margin: 15px 0;
+    color: red;
+  }
+  .subtitle {
+    font-size: 13px;
+    color: #226aff;
+    display: flex;
+    justify-content: space-between;
+  }
+  .content {
+    img {
+      width: 100%;
+    }
+  }
+}
+</style>
