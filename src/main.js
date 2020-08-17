@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-08-09 13:47:05
- * @LastEditTime: 2020-08-12 23:25:01
+ * @LastEditTime: 2020-08-17 15:45:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\main.js
@@ -38,11 +38,14 @@ import './lib/mui/css/icons-extra.css';
 import {
     Header,
     Swipe,
-    SwipeItem
+    SwipeItem,
+    Button
 } from 'mint-ui';
 Vue.component(Header.name, Header);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
+Vue.component(Button.name, Button);
+
 
 
 // 1.3 导入自己的 router.js 路由模块

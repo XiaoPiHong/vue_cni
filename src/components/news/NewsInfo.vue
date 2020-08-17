@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-17 09:25:13
- * @LastEditTime: 2020-08-17 10:37:54
+ * @LastEditTime: 2020-08-17 15:32:30
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\components\news\NewsInfo.vue
@@ -19,9 +19,15 @@
 
     <!-- 内容区域 -->
     <div class="content" v-html="newsinfo.content"></div>
+
+    <!-- 评论子组件区域 -->
+    <comment-box :id="this.id"></comment-box>
   </div>
 </template>
 <script>
+// 1. 导入 评论子组件
+import comment from "../subcomponents/comment.vue";
+
 export default {
   data() {
     return {
@@ -44,9 +50,13 @@ export default {
       });
     },
   },
+  components: {
+    // 用来注册子组件的节点
+    "comment-box": comment,
+  },
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss" >
 .newsinfo-container {
   padding: 0 4px;
   .title {
