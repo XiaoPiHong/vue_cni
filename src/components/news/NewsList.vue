@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-11 23:32:14
- * @LastEditTime: 2020-08-12 23:21:01
+ * @LastEditTime: 2020-08-17 09:28:04
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\components\news\NewsList.vue
@@ -10,11 +10,8 @@
   <div>
     <ul class="mui-table-view">
       <li class="mui-table-view-cell mui-media" v-for="item in newslist" :key="item.id">
-        <a href="javascript:;">
-          <img
-            class="mui-media-object mui-pull-left"
-            src="https://avatars1.githubusercontent.com/u/59324264?s=400&u=8fc53188d97c42219be396463f8bd8a363575cb3&v=4"
-          />
+        <router-link :to="'/home/newsinfo/'+item.id">
+          <img class="mui-media-object mui-pull-left" :src="item.img_url" />
           <div class="mui-media-body">
             <h1>{{item.title}}</h1>
             <p class="mui-ellipsis">
@@ -22,7 +19,7 @@
               <span>点击：{{item.click}}次</span>
             </p>
           </div>
-        </a>
+        </router-link>
       </li>
     </ul>
   </div>
