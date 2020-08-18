@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-18 10:17:34
- * @LastEditTime: 2020-08-18 22:46:35
+ * @LastEditTime: 2020-08-18 23:41:56
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\components\photos\PhotoList.vue
@@ -15,14 +15,23 @@
         class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted"
       >
         <div class="mui-scroll">
+          <!-- 使用属性绑定的方式设置进入后默认高亮第一项 -->
           <a
             :class="['mui-control-item', item.id == 0 ? 'mui-active' : '']"
             v-for="item in cates"
             :key="item.id"
+            @click="getPhotoListByCateId(item.id)"
           >{{item.title}}</a>
         </div>
       </div>
     </div>
+
+    <!-- 图片列表区域 -->
+    <ul>
+      <li v-for="item in list" :key="item.id">
+        <img v-lazy="item.img_url" />
+      </li>
+    </ul>
   </div>
 </template>
 <script>
@@ -33,10 +42,13 @@ export default {
   data() {
     return {
       cates: [], // 所有分类的列表数组
+      list: [], // 图片列表的数组
     };
   },
   created() {
     this.getAllCategory();
+    // 默认进入页面，就主动请求 所有图片列表的数据
+    this.getPhotoListByCateId(0);
   },
   mounted() {
     // 当 组件中的DOM结构被渲染好并放到页面中后，会执行这个 钩子函数
@@ -57,6 +69,14 @@ export default {
         }
       });
     },
+    getPhotoListByCateId(cateId) {
+      // 根据 分类Id，获取图片列表
+      this.$http.get("api/getimages.php/" + cateId).then((result) => {
+        if (result.body.status === 0) {
+          this.list = result.body.message;
+        }
+      });
+    },
   },
 };
 </script>
@@ -64,5 +84,11 @@ export default {
 //解决滑动顶部tab栏控制台警告问题
 * {
   touch-action: pan-y;
+}
+
+img[lazy="loading"] {
+  width: 40px;
+  height: 300px;
+  margin: auto;
 }
 </style>

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-08-09 13:47:05
- * @LastEditTime: 2020-08-17 21:28:51
+ * @LastEditTime: 2020-08-18 23:20:59
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\main.js
@@ -41,13 +41,14 @@ import {
     Header,
     Swipe,
     SwipeItem,
-    Button
+    Button,
+    Lazyload
 } from 'mint-ui';
 Vue.component(Header.name, Header);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 Vue.component(Button.name, Button);
-
+Vue.use(Lazyload);
 
 
 // 1.3 导入自己的 router.js 路由模块
