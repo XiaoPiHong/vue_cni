@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-08-09 13:47:05
- * @LastEditTime: 2020-08-17 09:31:05
+ * @LastEditTime: 2020-08-18 10:20:46
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\router.js
@@ -18,6 +18,8 @@ import ShopcarContainer from './components/tabbar/ShopcarContainer.vue';
 import SearchContainer from './components/tabbar/SearchContainer.vue';
 import NewsList from './components/news/NewsList.vue';
 import NewsInfo from './components/news/NewsInfo.vue';
+import PhotoList from './components/photos/PhotoList.vue';
+
 
 
 //创建路由对象
@@ -49,6 +51,10 @@ var router = new VueRouter({
         {
             path: '/home/newsinfo/:id',
             component: NewsInfo
+        },
+        {
+            path: '/home/photolist',
+            component: PhotoList
         }
     ],
     linkActiveClass: 'mui-active' // 覆盖默认的路由高亮的类，默认的类叫做 router-link-active
