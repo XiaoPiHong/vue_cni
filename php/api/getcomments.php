@@ -2,7 +2,7 @@
 /*
  * @Author: your name
  * @Date: 2020-08-17 15:58:15
- * @LastEditTime: 2020-08-17 17:40:17
+ * @LastEditTime: 2020-08-17 23:27:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\php\api\getcomments.php
@@ -14,10 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' ? true : false) {
     $conn = mysqli_connect('localhost', 'root', '', 'vue_cni');
     //设置插入数据库数据的编码
     $conn->query('SET NAMES utf8');
-    $num_rec_per_page = 3; // 每页显示数量
+    $num_rec_per_page = 5; // 每页显示数量
     $page = $_GET["pageindex"]; //页数
     $start_from = ($page - 1) * $num_rec_per_page;
-    $sql = "SELECT * FROM comments LIMIT $start_from, $num_rec_per_page";
+    $sql = "SELECT * FROM comments  ORDER BY  add_time DESC LIMIT $start_from, $num_rec_per_page";
     $result = mysqli_query($conn, $sql);
     while ($row = mysqli_fetch_assoc($result)) {
         $data[] = $row;

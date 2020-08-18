@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-08-09 13:47:05
- * @LastEditTime: 2020-08-17 15:45:42
+ * @LastEditTime: 2020-08-17 21:28:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\main.js
@@ -28,6 +28,8 @@ import VueResource from 'vue-resource';
 Vue.use(VueResource);
 // 设置请求的根路径
 Vue.http.options.root = 'http://localhost:8888/Vue/vue_cni/php';
+// 全局设置 post 时候表单数据格式组织形式   application/x-www-form-urlencoded
+Vue.http.options.emulateJSON = true;
 
 
 //导入 MUI的样式
