@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-18 10:17:34
- * @LastEditTime: 2020-08-19 14:31:28
+ * @LastEditTime: 2020-08-19 15:30:48
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\components\photos\PhotoList.vue
@@ -28,13 +28,13 @@
 
     <!-- 图片列表区域 -->
     <ul class="photo-list">
-      <li v-for="item in list" :key="item.id">
+      <router-link v-for="item in list" :key="item.id" :to="'/home/photoinfo/'+item.id" tag="li">
         <img v-lazy="item.img_url" />
         <div class="info">
           <h1 class="info-title">{{ item.title }}</h1>
           <div class="info-body">{{ item.zhaiyao }}</div>
         </div>
-      </li>
+      </router-link>
     </ul>
   </div>
 </template>
