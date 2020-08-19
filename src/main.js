@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-08-09 13:47:05
- * @LastEditTime: 2020-08-18 23:20:59
+ * @LastEditTime: 2020-08-19 14:29:31
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\main.js
@@ -36,7 +36,7 @@ Vue.http.options.emulateJSON = true;
 import './lib/mui/css/mui.min.css';
 // 导入扩展图标样式
 import './lib/mui/css/icons-extra.css';
-//按需导入Mint-UI 中的组件
+/* //按需导入Mint-UI 中的组件
 import {
     Header,
     Swipe,
@@ -48,7 +48,12 @@ Vue.component(Header.name, Header);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 Vue.component(Button.name, Button);
-Vue.use(Lazyload);
+Vue.use(Lazyload); */
+//因为懒加载需要某些功能才能完成，所以需要全局导入Mint-UI 中的组件
+import MintUI from 'mint-ui';
+Vue.use(MintUI);
+import 'mint-ui/lib/style.css';
+
 
 
 // 1.3 导入自己的 router.js 路由模块

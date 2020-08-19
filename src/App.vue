@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-09 13:47:05
- * @LastEditTime: 2020-08-18 14:29:19
+ * @LastEditTime: 2020-08-19 12:15:50
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\App.vue
@@ -45,6 +45,10 @@
 </script>
 
 <style lang="scss" scoped>
+.mint-header {
+  z-index: 99;
+}
+
 .app-container {
   padding-top: 40px;
   padding-bottom: 50px;

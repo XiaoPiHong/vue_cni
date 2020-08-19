@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-18 10:17:34
- * @LastEditTime: 2020-08-18 23:41:56
+ * @LastEditTime: 2020-08-19 14:31:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\components\photos\PhotoList.vue
@@ -27,9 +27,13 @@
     </div>
 
     <!-- 图片列表区域 -->
-    <ul>
+    <ul class="photo-list">
       <li v-for="item in list" :key="item.id">
         <img v-lazy="item.img_url" />
+        <div class="info">
+          <h1 class="info-title">{{ item.title }}</h1>
+          <div class="info-body">{{ item.zhaiyao }}</div>
+        </div>
       </li>
     </ul>
   </div>
@@ -71,7 +75,7 @@ export default {
     },
     getPhotoListByCateId(cateId) {
       // 根据 分类Id，获取图片列表
-      this.$http.get("api/getimages.php/" + cateId).then((result) => {
+      this.$http.get("api/getimages.php?id=" + cateId).then((result) => {
         if (result.body.status === 0) {
           this.list = result.body.message;
         }
@@ -86,9 +90,42 @@ export default {
   touch-action: pan-y;
 }
 
-img[lazy="loading"] {
-  width: 40px;
-  height: 300px;
-  margin: auto;
+.photo-list {
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+  padding-bottom: 0;
+  li {
+    background-color: #ccc;
+    text-align: center;
+    margin-bottom: 10px;
+    box-shadow: 0 0 9px #999;
+    position: relative;
+    img {
+      width: 100%;
+      vertical-align: middle;
+    }
+    img[lazy="loading"] {
+      width: 40px;
+      height: 300px;
+      margin: auto;
+    }
+
+    .info {
+      width: 100%;
+      color: white;
+      text-align: left;
+      position: absolute;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      max-height: 84px;
+      .info-title {
+        font-size: 14px;
+      }
+      .info-body {
+        font-size: 13px;
+      }
+    }
+  }
 }
 </style>
