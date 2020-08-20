@@ -2,7 +2,7 @@
 /*
  * @Author: your name
  * @Date: 2020-08-19 09:26:37
- * @LastEditTime: 2020-08-19 12:04:19
+ * @LastEditTime: 2020-08-19 18:30:30
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\php\api\getimages.php
@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' ? true : false) {
     $conn = mysqli_connect('localhost', 'root', '', 'vue_cni');
     $conn->query('SET NAMES utf8');
     $cateId = $_GET['id'];
-    $sql = $cateId == 0 ? 'select * from images' : "select * from images where category=$cateId";
+    $sql = $cateId == 0 ? 'select id,title,zhaiyao,img_url from images GROUP BY title' : "select id,title,zhaiyao,img_url from images where category=$cateId GROUP BY title";
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result)) {
         while ($row = mysqli_fetch_assoc($result)) {

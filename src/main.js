@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-08-09 13:47:05
- * @LastEditTime: 2020-08-19 14:29:31
+ * @LastEditTime: 2020-08-19 23:36:45
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\main.js
@@ -53,6 +53,10 @@ Vue.use(Lazyload); */
 import MintUI from 'mint-ui';
 Vue.use(MintUI);
 import 'mint-ui/lib/style.css';
+
+// 安装 图片预览插件
+import VuePreview from 'vue-preview';
+Vue.use(VuePreview);
 
 
 
