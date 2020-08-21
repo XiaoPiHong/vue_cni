@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-20 09:44:41
- * @LastEditTime: 2020-08-20 10:33:00
+ * @LastEditTime: 2020-08-20 12:35:37
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\components\goods\GoodsList.vue
@@ -12,7 +12,7 @@
       <img
         src="https://img.alicdn.com/imgextra/i4/2201702082835/O1CN01mg1Xl81WoTSE2MfOQ_!!2201702082835.jpg_430x430q90.jpg"
       />
-      <h1 class="title">上海中兴守护宝F6S正品4G全网通学生价超长待机大字大声老年安卓八核128G游戏智能手机双卡电信指纹老人手机</h1>
+      <h1 class="title">4G全网通学生价超长待机安卓八核128G游戏智能手机</h1>
       <div class="info">
         <p class="price">
           <span class="now">￥899</span>
@@ -28,7 +28,7 @@
       <img
         src="https://img.alicdn.com/imgextra/i4/2201702082835/O1CN01mg1Xl81WoTSE2MfOQ_!!2201702082835.jpg_430x430q90.jpg"
       />
-      <h1 class="title">上海中兴守护宝F6S正品4G全网通学生价超长待机大字大声老年安卓八核128G游戏智能手机双卡电信指纹老人手机</h1>
+      <h1 class="title">4G全网通学生价超长待机安卓八核128G游戏智能手机</h1>
       <div class="info">
         <p class="price">
           <span class="now">￥899</span>
@@ -44,7 +44,7 @@
       <img
         src="https://img.alicdn.com/imgextra/i4/2201702082835/O1CN01mg1Xl81WoTSE2MfOQ_!!2201702082835.jpg_430x430q90.jpg"
       />
-      <h1 class="title">上海中兴守护宝F6S正品4G全网通学生价超长待机大字大声老年安卓八核128G游戏智能手机双卡电信指纹老人手机</h1>
+      <h1 class="title">4G全网通学生价超长待机安卓八核128G游戏智能手机</h1>
       <div class="info">
         <p class="price">
           <span class="now">￥899</span>
@@ -79,7 +79,7 @@ export default {};
     //解决每个商品高度不一导致某些商品下面有空白
     flex-direction: column;
     justify-content: space-between;
-    min-height: 293px;
+    min-height: 290px;
     img {
       width: 100%;
     }
