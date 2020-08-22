@@ -1,65 +1,61 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-20 09:44:41
- * @LastEditTime: 2020-08-20 12:35:37
+ * @LastEditTime: 2020-08-22 11:55:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\components\goods\GoodsList.vue
 -->
 <template>
   <div class="goods-list">
-    <div class="goods-item">
-      <img
-        src="https://img.alicdn.com/imgextra/i4/2201702082835/O1CN01mg1Xl81WoTSE2MfOQ_!!2201702082835.jpg_430x430q90.jpg"
-      />
-      <h1 class="title">4G全网通学生价超长待机安卓八核128G游戏智能手机</h1>
+    <div class="goods-item" v-for="item in goodslist" :key="item.id">
+      <img :src="item.img_url" />
+      <h1 class="title">{{item.title}}</h1>
       <div class="info">
         <p class="price">
-          <span class="now">￥899</span>
-          <span class="old">￥999</span>
+          <span class="now">￥{{item.sell_price}}</span>
+          <span class="old">￥{{item.market_price}}</span>
         </p>
         <p class="sell">
           <span>热卖中</span>
-          <span>剩余60件</span>
+          <span>剩余{{item.stock_quantity}}件</span>
         </p>
       </div>
     </div>
-    <div class="goods-item">
-      <img
-        src="https://img.alicdn.com/imgextra/i4/2201702082835/O1CN01mg1Xl81WoTSE2MfOQ_!!2201702082835.jpg_430x430q90.jpg"
-      />
-      <h1 class="title">4G全网通学生价超长待机安卓八核128G游戏智能手机</h1>
-      <div class="info">
-        <p class="price">
-          <span class="now">￥899</span>
-          <span class="old">￥999</span>
-        </p>
-        <p class="sell">
-          <span>热卖中</span>
-          <span>剩余60件</span>
-        </p>
-      </div>
-    </div>
-    <div class="goods-item">
-      <img
-        src="https://img.alicdn.com/imgextra/i4/2201702082835/O1CN01mg1Xl81WoTSE2MfOQ_!!2201702082835.jpg_430x430q90.jpg"
-      />
-      <h1 class="title">4G全网通学生价超长待机安卓八核128G游戏智能手机</h1>
-      <div class="info">
-        <p class="price">
-          <span class="now">￥899</span>
-          <span class="old">￥999</span>
-        </p>
-        <p class="sell">
-          <span>热卖中</span>
-          <span>剩余60件</span>
-        </p>
-      </div>
-    </div>
+
+    <mt-button type="danger" size="large" @click="getMore">加载更多</mt-button>
   </div>
 </template>
 <script>
-export default {};
+export default {
+  //data 是往自己组件内部，挂在一些私有数据的
+  data() {
+    return {
+      pageindex: 1, //分页的页数
+      goodslist: [], //存放商品列表的数组
+    };
+  },
+  created() {
+    this.getGoodsList();
+  },
+  methods: {
+    getGoodsList() {
+      //获取商品列表
+      this.$http
+        .get("api/getgoods.php?pageindex=" + this.pageindex)
+        .then((result) => {
+          if (result.body.status === 0) {
+            // this.goodslist = result.body.message;
+            this.goodslist = this.goodslist.concat(result.body.message);
+          }
+        });
+    },
+    getMore() {
+      this.pageindex++;
+      this.getGoodsList();
+    },
+  },
+};
 </script>
 <style lang="scss" scoped>
 .goods-list {
