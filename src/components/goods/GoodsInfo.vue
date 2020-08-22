@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-22 12:04:19
- * @LastEditTime: 2020-08-22 18:19:16
+ * @LastEditTime: 2020-08-22 18:54:04
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\components\goods\GoodsInfo.vue
@@ -12,7 +12,7 @@
     <div class="mui-card">
       <div class="mui-card-content">
         <div class="mui-card-content-inner">
-          <swiper :lunbotuList="lunbotu"></swiper>
+          <swiper :lunbotuList="lunbotu" :isfull="false"></swiper>
         </div>
       </div>
     </div>

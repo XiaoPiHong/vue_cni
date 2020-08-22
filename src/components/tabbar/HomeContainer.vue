@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-09 16:21:22
- * @LastEditTime: 2020-08-22 16:41:58
+ * @LastEditTime: 2020-08-22 18:50:23
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\components\tabbar\HomeContainer.vue
@@ -14,7 +14,7 @@
       <mt-swipe-item>2</mt-swipe-item>
       <mt-swipe-item>3</mt-swipe-item>
     </mt-swipe>-->
-    <swiper :lunbotuList="lunbotuList"></swiper>
+    <swiper :lunbotuList="lunbotuList" isfull="true"></swiper>
 
     <!-- 九宫格 到 6宫格 的改造工程 -->
     <ul class="mui-table-view mui-grid-view mui-grid-9">
