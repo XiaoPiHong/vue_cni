@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-22 12:04:19
- * @LastEditTime: 2020-08-22 15:55:17
+ * @LastEditTime: 2020-08-22 18:19:16
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\components\goods\GoodsInfo.vue
@@ -11,7 +11,9 @@
     <!-- 商品轮播图区域 -->
     <div class="mui-card">
       <div class="mui-card-content">
-        <div class="mui-card-content-inner">这是一个最简单的卡片视图控件；卡片视图常用来显示完整独立的一段信息，比如一篇文章的预览图、作者信息、点赞数量等</div>
+        <div class="mui-card-content-inner">
+          <swiper :lunbotuList="lunbotu"></swiper>
+        </div>
       </div>
     </div>
     <!-- 商品购买区域 -->
@@ -32,6 +34,9 @@
   </div>
 </template>
 <script>
+//导入轮播图组件
+import swiper from "../subcomponents/swiper.vue";
+
 export default {
   data() {
     return {
@@ -44,12 +49,21 @@ export default {
   },
   methods: {
     getLunbotu() {
-      this.$http.get("api/getthumimages.php?id=" + this.id).then((result) => {
-        if (result.body.status === 0) {
-          this.lunbotu = result.body.message;
-        }
-      });
+      this.$http
+        .get("api/getgoodthumimages.php?id=" + this.id)
+        .then((result) => {
+          if (result.body.status === 0) {
+            //先循环轮播图数组每一项，为item添加img属性，因为轮播图组件中只认识item.img,不认识item.src
+            result.body.message.forEach((item) => {
+              item.url = item.src;
+            });
+            this.lunbotu = result.body.message;
+          }
+        });
     },
+  },
+  components: {
+    swiper,
   },
 };
 </script>
