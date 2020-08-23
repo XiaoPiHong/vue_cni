@@ -1,18 +1,51 @@
-<!--
- * @Author: your name
- * @Date: 2020-08-23 09:21:53
- * @LastEditTime: 2020-08-23 09:23:11
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \vue_cni\src\components\goods\GoodsDesc.vue
--->
 <template>
-  <div>
-    <h3>商品图文介绍</h3>
+  <div class="goodsdesc-container">
+    <h3>{{ info.title }}</h3>
+
+    <hr />
+
+    <div class="content" v-html="info.content"></div>
   </div>
 </template>
+
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      info: {}, // 图文数据
+    };
+  },
+  created() {
+    this.getGoodsDesc();
+  },
+  methods: {
+    getGoodsDesc() {
+      this.$http
+        .get("api/getdesc.php?id=" + this.$route.params.id)
+        .then((result) => {
+          if (result.body.status === 0) {
+            this.info = result.body.message[0];
+          }
+        });
+    },
+  },
+};
 </script>
-<style lang="scss" scoped>
+
+<style lang="scss">
+.goodsdesc-container {
+  padding: 4px;
+  h3 {
+    font-size: 16px;
+    color: #226aff;
+    text-align: center;
+    margin: 15px 0;
+  }
+  //解决图片显示全的方法：先去掉scoped，再添加下面的属性
+  .content {
+    img {
+      width: 100%;
+    }
+  }
+}
 </style>
