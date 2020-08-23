@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-08-09 13:47:05
- * @LastEditTime: 2020-08-22 12:42:58
+ * @LastEditTime: 2020-08-23 09:26:48
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\router.js
@@ -22,6 +22,8 @@ import PhotoList from './components/photos/PhotoList.vue';
 import PhotoInfo from './components/photos/PhotoInfo.vue';
 import GoodsList from './components/goods/GoodsList.vue';
 import GoodsInfo from './components/goods/GoodsInfo.vue'
+import GoodsDesc from './components/goods/GoodsDesc.vue';
+import GoodsComment from './components/goods/GoodsComment.vue';
 
 //创建路由对象
 var router = new VueRouter({
@@ -74,6 +76,17 @@ var router = new VueRouter({
             component: GoodsInfo,
             name: 'goodsinfo'
         },
+        {
+            path: '/home/goodsdesc/:id',
+            component: GoodsDesc,
+            name: 'goodsdesc'
+        },
+        {
+            path: '/home/goodscomment/:id',
+            component: GoodsComment,
+            name: 'goodscomment'
+
+        }
     ],
     linkActiveClass: 'mui-active' // 覆盖默认的路由高亮的类，默认的类叫做 router-link-active
 });
