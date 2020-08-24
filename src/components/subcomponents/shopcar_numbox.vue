@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-22 22:45:59
- * @LastEditTime: 2020-08-24 20:15:28
+ * @LastEditTime: 2020-08-24 20:47:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\components\subcomponents\goodsinfo_numbox.vue
@@ -18,6 +18,7 @@
       :value="initcount"
       @change="countChanged"
       ref="numbox"
+      readonly
     />
     <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
   </div>
@@ -33,9 +34,14 @@ export default {
   methods: {
     countChanged() {
       //数量改变了
+      //每当数量值改变，则立即把最新数量同步到 购物车的 store中，覆盖之前的数量值
+      this.$store.commit("updateGoodsInfo", {
+        id: this.goodsid,
+        count: this.$refs.numbox.value,
+      });
     },
   },
-  props: ["initcount"],
+  props: ["initcount", "goodsid"],
 };
 </script>
 <style lang="scss" scoped>

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-08-09 13:47:05
- * @LastEditTime: 2020-08-24 20:10:33
+ * @LastEditTime: 2020-08-24 21:12:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\main.js
@@ -26,7 +26,8 @@ var store = new Vuex.Store({
     },
     mutations: { //this.$store.commit('方法的名称','按需传递唯一的参数');
         addToCar(state, goodsinfo) {
-            //点击加入购物车，把商品信息，保存到 store 中的car上
+            //点击加入购物车，把商品信息，保存到 store 中的car上，这里的商品信息是：{id: this.id,count: this.selectedCount,price: this.goodsinfo.sell_price,selected: true}
+
             // 分析：
             // 1. 如果购物车中，之前就已经有这个对应的商品了，那么，只需要更新数量
             // 2. 如果没有，则直接把 商品数据，push 到 car 中即可
@@ -39,7 +40,7 @@ var store = new Vuex.Store({
                     item.count += parseInt(goodsinfo.count);
                     flag = true;
                     return true;
-                    //return true用于终止循环
+                    //return true用于终止some方法的循环
                 }
             });
 
@@ -49,11 +50,27 @@ var store = new Vuex.Store({
             }
             // 当 更新 car 之后，把 car 数组，存储到 本地的 localStorage 中
             localStorage.setItem("car", JSON.stringify(state.car));
-        }
+        },
+        updateGoodsInfo(state, goodsinfo) {
+            //修改购物车中商品的数量值
+            //分析：用于在购物车修改数量时调用的方法
+            //1.这里的goodsinfo是调用该方法时候传进来的参数 {id: 修改商品的id值,count: 修改后的数量值}
+            //2.用some方法去匹配在 state的car数组中 商品id值相同的 商品，将它的数量改为 修改后的数量值
+            //3.修改完后再将这个car数组放进 本地存储中，覆盖掉之前的
+            state.car.some(item => {
+                if (item.id === goodsinfo.id) {
+                    item.count = parseInt(goodsinfo.count);
+                    return true;
+                }
+            });
+            // 当修改完商品的数量，把最新的购物车数据，保存到 本地存储中
+            localStorage.setItem('car', JSON.stringify(state.car));
+        },
     },
     getters: { //this.$store.getters.***
         //相当于 计算属性，也相当于 filters
         getAllCount(state) {
+            //这个方法在 App.vue 使用
             var c = 0;
             state.car.forEach(item => {
                 c += item.count;
@@ -61,6 +78,7 @@ var store = new Vuex.Store({
             return c;
         },
         getGoodsCount(state) {
+            // 在ShopcarContainer.vue使用，该方法是用来计算加入购物车商品每样的数量是多少的
             var o = {};
             state.car.forEach(item => {
                 o[item.id] = item.count;
