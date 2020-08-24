@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-22 12:04:19
- * @LastEditTime: 2020-08-24 12:01:47
+ * @LastEditTime: 2020-08-24 14:33:39
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\components\goods\GoodsInfo.vue

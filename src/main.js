@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-08-09 13:47:05
- * @LastEditTime: 2020-08-24 12:05:22
+ * @LastEditTime: 2020-08-24 14:38:49
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\main.js
@@ -16,9 +16,13 @@ Vue.use(VueRouter);
 //注册 vuex
 import Vuex from 'vuex';
 Vue.use(Vuex);
+
+// 每次刚进入 网站，肯定会 调用 main.js 在刚调用的时候，先从本地存储中，把 购物车的数据读出来，放到 store 中
+var car = JSON.parse(localStorage.getItem('car') || '[]');
+
 var store = new Vuex.Store({
     state: { //this.$store.state.***来调用这里面数据
-        car: [] //将 购物车中商品的数据，用一个数组存起来，在car数组中存储一些商品的对象，我们可以暂时将这个商品对象，设计成这个样子 {id:商品的id,count:要购买的数量,price:商品的单价,selected:false}
+        car: car //将 购物车中商品的数据，用一个数组存起来，在car数组中存储一些商品的对象，我们可以暂时将这个商品对象，设计成这个样子 {id:商品的id,count:要购买的数量,price:商品的单价,selected:false}
     },
     mutations: { //this.$store.commit('方法的名称','按需传递唯一的参数');
         addToCar(state, goodsinfo) {
@@ -35,6 +39,7 @@ var store = new Vuex.Store({
                     item.count += parseInt(goodsinfo.count);
                     flag = true;
                     return true;
+                    //return true用于终止循环
                 }
             });
 
@@ -42,10 +47,19 @@ var store = new Vuex.Store({
             if (!flag) {
                 state.car.push(goodsinfo);
             }
+            // 当 更新 car 之后，把 car 数组，存储到 本地的 localStorage 中
+            localStorage.setItem("car", JSON.stringify(state.car));
         }
     },
     getters: { //this.$store.getters.***
-
+        //相当于 计算属性，也相当于 filters
+        getAllCount(state) {
+            var c = 0;
+            state.car.forEach(item => {
+                c += item.count;
+            })
+            return c;
+        }
     }
 });
 
