@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-08-09 13:47:05
- * @LastEditTime: 2020-08-24 14:38:49
+ * @LastEditTime: 2020-08-24 20:10:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\main.js
@@ -59,6 +59,13 @@ var store = new Vuex.Store({
                 c += item.count;
             })
             return c;
+        },
+        getGoodsCount(state) {
+            var o = {};
+            state.car.forEach(item => {
+                o[item.id] = item.count;
+            });
+            return o;
         }
     }
 });

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-22 22:45:59
- * @LastEditTime: 2020-08-24 15:45:15
+ * @LastEditTime: 2020-08-24 20:15:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\components\subcomponents\goodsinfo_numbox.vue
@@ -15,7 +15,7 @@
       id="test"
       class="mui-input-numbox"
       type="number"
-      value="1"
+      :value="initcount"
       @change="countChanged"
       ref="numbox"
     />
@@ -35,6 +35,7 @@ export default {
       //数量改变了
     },
   },
+  props: ["initcount"],
 };
 </script>
 <style lang="scss" scoped>
