@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-22 12:04:19
- * @LastEditTime: 2020-08-24 08:24:33
+ * @LastEditTime: 2020-08-24 08:53:43
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\components\goods\GoodsInfo.vue
@@ -34,11 +34,16 @@
           </p>
           <p>
             购买数量：
-            <numbox></numbox>
+            <numbox @getcount="getSelectedCount"></numbox>
           </p>
           <p>
             <mt-button type="primary" size="small">立即购买</mt-button>
             <mt-button type="danger" size="small" @click="addToShopCar">加入购物车</mt-button>
+            <!-- 分析： 如何实现加入购物车时候，拿到 选择的数量 -->
+            <!-- 1. 经过分析发现： 按钮属于 goodsinfo 页面， 数字 属于 numberbox 组件 -->
+            <!-- 2. 由于涉及到了父子组件的嵌套了，所以，无法直接在 goodsinfo 页面zhong 中获取到 选中的商品数量值-->
+            <!-- 3. 怎么解决这个问题：涉及到了 子组件向父组件传值了（事件调用机制） -->
+            <!-- 4. 事件调用的本质： 父向子传递方法，子调用这个方法， 同时把 数据当作参数 传递给这个方法 -->
           </p>
         </div>
       </div>
@@ -70,9 +75,10 @@ export default {
   data() {
     return {
       id: this.$route.params.id, //将路由参数对象中的 id 挂载到 data上，方便后期调用
-      lunbotu: [],
-      goodsinfo: {},
+      lunbotu: [], //轮播图的数据
+      goodsinfo: {}, //获取到的商品的信息
       ballFlag: false, //控制小球隐藏和显示的标识符
+      selectedCount: 1, //保存用户选中的商品数量，默认为1
     };
   },
   created() {
@@ -147,11 +153,16 @@ export default {
       const yDist = badgePosition.top - ballPosition.top;
 
       el.style.transform = `translate(${xDist}px, ${yDist}px)`;
-      el.style.transition = "all 1s cubic-bezier(.23,-0.61,.88,.35)";
+      el.style.transition = "all 0.6s cubic-bezier(.23,-0.61,.88,.35)";
       done();
     },
     afterEnter(el) {
       this.ballFlag = !this.ballFlag;
+    },
+    getSelectedCount(count) {
+      //当子组件把 选中数量传递给父组件的时候，把选中的值保存到 data身上
+      this.selectedCount = count;
+      console.log("父组件拿到的数量值为： " + this.selectedCount);
     },
   },
   components: {
