@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-08-09 13:47:05
- * @LastEditTime: 2020-08-24 21:12:33
+ * @LastEditTime: 2020-08-24 21:39:59
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\main.js
@@ -66,6 +66,17 @@ var store = new Vuex.Store({
             // 当修改完商品的数量，把最新的购物车数据，保存到 本地存储中
             localStorage.setItem('car', JSON.stringify(state.car));
         },
+        removeFromCar(state, id) {
+            //根据id，从store中的购物车中删除对应的那条商品数据
+            state.car.some((item, i) => {
+                if (item.id === id) {
+                    state.car.splice(i, 1);
+                    return true;
+                }
+            });
+            //将删除完毕后的，最新的购物车数据，同步到本地存储中
+            localStorage.setItem('car', JSON.stringify(state.car));
+        }
     },
     getters: { //this.$store.getters.***
         //相当于 计算属性，也相当于 filters
