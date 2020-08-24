@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-08-09 13:47:05
- * @LastEditTime: 2020-08-19 23:36:45
+ * @LastEditTime: 2020-08-24 11:37:02
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\main.js
@@ -12,6 +12,26 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 // 1.2 安装路由
 Vue.use(VueRouter);
+
+//注册 vuex
+import Vuex from 'vuex';
+Vue.use(Vuex);
+var store = new Vuex.Store({
+    state: { //this.$store.state.***来调用这里面数据
+        car: [] //将 购物车中商品的数据，用一个数组存起来，在car数组中存储一些商品的对象，我们可以暂时将这个商品对象，设计成这个样子 {id:商品的id,count:要购买的数量,price:商品的单价,selected:false}
+    },
+    mutations: { //this.$store.commit('方法的名称','按需传递唯一的参数');
+        addToCar() {
+            //点击加入购物车，把商品信息，保存到 store 中的car上
+            // 分析：
+            // 1. 如果购物车中，之前就已经有这个对应的商品了，那么，只需要更新数量
+            // 2. 如果没有，则直接把 商品数据，push 到 car 中即可
+        }
+    },
+    getters: { //this.$store.getters.***
+
+    }
+});
 
 
 // 导入格式化时间的插件 先 cnpm i moment@2.19.1 -S 这里格式化时间使用的是moment插件
@@ -75,5 +95,6 @@ import app from './App.vue';
 var vm = new Vue({
     el: '#app',
     render: e => e(app), //render函数将App组件渲染到index.html
-    router // 1.4 挂载路由对象到 VM 实例上
+    router, // 1.4 挂载路由对象到 VM 实例上
+    store // 挂载 store 状态管理对象
 });

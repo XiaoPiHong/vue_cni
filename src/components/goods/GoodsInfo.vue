@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-22 12:04:19
- * @LastEditTime: 2020-08-24 08:59:02
+ * @LastEditTime: 2020-08-24 11:35:23
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\components\goods\GoodsInfo.vue
@@ -128,6 +128,14 @@ export default {
     addToShopCar() {
       //添加到购物车
       this.ballFlag = !this.ballFlag;
+      //{id:商品的id,count:要购买的数量,price:商品的单价,selected:false}
+      //拼接出一个要保存到 store 中 car 数组里的商品信息对象
+      var goodsinfo = {
+        id: this.id,
+        count: this.selectedCount,
+        price: this.goodsinfo.sell_pricee,
+        selected: true,
+      };
     },
     beforeEnter(el) {
       el.style.transform = "translate(0,0)";
