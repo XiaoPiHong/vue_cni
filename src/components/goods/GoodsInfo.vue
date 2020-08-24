@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-22 12:04:19
- * @LastEditTime: 2020-08-24 08:53:43
+ * @LastEditTime: 2020-08-24 08:59:02
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\components\goods\GoodsInfo.vue
@@ -34,7 +34,7 @@
           </p>
           <p>
             购买数量：
-            <numbox @getcount="getSelectedCount"></numbox>
+            <numbox @getcount="getSelectedCount" :max="goodsinfo.stock_quantity"></numbox>
           </p>
           <p>
             <mt-button type="primary" size="small">立即购买</mt-button>
