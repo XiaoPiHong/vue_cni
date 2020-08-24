@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-09 16:22:07
- * @LastEditTime: 2020-08-24 15:56:39
+ * @LastEditTime: 2020-08-24 17:42:20
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\components\tabbar\ShopcarContainer.vue
@@ -10,17 +10,15 @@
   <div class="shopcar-container">
     <div class="goods-list">
       <!-- 商品列表项区域 -->
-      <div class="mui-card">
+      <div class="mui-card" v-for="item in goodslist " :key="item.id">
         <div class="mui-card-content">
           <div class="mui-card-content-inner">
             <mt-switch></mt-switch>
-            <img
-              src="https://img.alicdn.com/imgextra/i4/2201702082835/O1CN01mg1Xl81WoTSE2MfOQ_!!2201702082835.jpg_430x430q90.jpg"
-            />
+            <img :src="item.thumb_path" />
             <div class="info">
-              <h1>4G全网通学生价超长待机安卓八核128G游戏智能手机</h1>
+              <h1>{{item.title}}</h1>
               <p>
-                <span class="price">￥2199</span>
+                <span class="price">￥{{item.sell_price}}</span>
                 <numbox></numbox>
                 <a href="javascript:;">删除</a>
               </p>
@@ -44,6 +42,34 @@
 import numbox from "../subcomponents/shopcar_numbox.vue";
 
 export default {
+  data() {
+    return {
+      goodslist: [], //购物车中所有商品的数据
+    };
+  },
+  created() {
+    this.getGoodsList();
+  },
+  methods: {
+    getGoodsList() {
+      // 1. 获取到 store 中所有的商品的Id，然后拼接出一个 用逗号分隔的 字符串
+      var idArr = [];
+      this.$store.state.car.forEach((item) => idArr.push(item.id));
+
+      //如果购物车中没有商品,则直接返回，不需要请求数据接口，否则会报错
+      if (idArr.length <= 0) {
+        return;
+      }
+      //获取购物车商品的列表
+      this.$http
+        .get("api/getshopcarlist.php?idArr=" + idArr.join(","))
+        .then((result) => {
+          if (result.body.status === 0) {
+            this.goodslist = result.body.message;
+          }
+        });
+    },
+  },
   components: {
     numbox,
   },
