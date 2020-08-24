@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-09 16:22:07
- * @LastEditTime: 2020-08-24 21:38:39
+ * @LastEditTime: 2020-08-24 22:48:03
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\components\tabbar\ShopcarContainer.vue
@@ -13,7 +13,10 @@
       <div class="mui-card" v-for="(item, i) in goodslist" :key="item.id">
         <div class="mui-card-content">
           <div class="mui-card-content-inner">
-            <mt-switch></mt-switch>
+            <mt-switch
+              @change="selectedChanged(item.id,$store.getters.getGoodsSelected[item.id])"
+              v-model="$store.getters.getGoodsSelected[item.id]"
+            ></mt-switch>
             <img :src="item.thumb_path" />
             <div class="info">
               <h1>{{item.title}}</h1>
@@ -31,9 +34,17 @@
       <!-- 结算区域 -->
       <div class="mui-card">
         <div class="mui-card-content">
-          <div
-            class="mui-card-content-inner"
-          >这是一个最简单的卡片视图控件；卡片视图常用来显示完整独立的一段信息，比如一篇文章的预览图、作者信息、点赞数量等</div>
+          <div class="mui-card-content-inner jiesuan">
+            <div class="left">
+              <p>总计（不含运费）</p>
+              <p>
+                已勾选商品
+                <span class="red">{{$store.getters.getGoodsCountAndAmount.count}}</span>件，总价
+                <span class="red">￥{{$store.getters.getGoodsCountAndAmount.amount}}</span>
+              </p>
+            </div>
+            <mt-button type="danger">去结算</mt-button>
+          </div>
         </div>
       </div>
     </div>
@@ -76,6 +87,10 @@ export default {
       this.goodslist.splice(index, 1);
       this.$store.commit("removeFromCar", id);
     },
+    selectedChanged(id, val) {
+      //每当点击开关，把最新的 开关状态，同步到store中
+      this.$store.commit("updateGoodsSelected", { id: id, selected: val });
+    },
   },
   components: {
     numbox,
@@ -112,6 +127,16 @@ export default {
         color: red;
         font-weight: bold;
       }
+    }
+  }
+  .jiesuan {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .red {
+      color: red;
+      font-weight: bold;
+      font-size: 16px;
     }
   }
 }

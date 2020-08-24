@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-09 16:21:22
- * @LastEditTime: 2020-08-22 18:50:23
+ * @LastEditTime: 2020-08-24 22:52:17
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\components\tabbar\HomeContainer.vue
@@ -56,7 +56,7 @@
       </li>
     </ul>
 
-    <h3>HomeContainer</h3>
+    <!-- <h3>HomeContainer</h3> -->
   </div>
 </template>
 
@@ -67,7 +67,7 @@ import swiper from "../subcomponents/swiper.vue";
 export default {
   data() {
     return {
-      lunbotuList: [], // 保存轮播图的数组
+      lunbotuList: [], //保存轮播图的数组
     };
   },
   //生命周期函数created的时候就调用getLunbotu()方法

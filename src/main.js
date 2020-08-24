@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-08-09 13:47:05
- * @LastEditTime: 2020-08-24 21:39:59
+ * @LastEditTime: 2020-08-24 22:47:15
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\main.js
@@ -76,6 +76,20 @@ var store = new Vuex.Store({
             });
             //将删除完毕后的，最新的购物车数据，同步到本地存储中
             localStorage.setItem('car', JSON.stringify(state.car));
+        },
+        updateGoodsSelected(state, info) {
+            //分析：
+            // 1.传过来对象，也就是info 就是  {id:商品的id,selected:开关的状态}
+            // 2.将store中的信息改掉
+            // 3.覆盖本地的数据
+            state.car.some(item => {
+                if (item.id === info.id) {
+                    item.selected = info.selected;
+                    return true;
+                }
+            });
+            //把最新的购物车商品的状态保存到 本地存储 中去
+            localStorage.setItem('car', JSON.stringify(state.car));
         }
     },
     getters: { //this.$store.getters.***
@@ -85,7 +99,7 @@ var store = new Vuex.Store({
             var c = 0;
             state.car.forEach(item => {
                 c += item.count;
-            })
+            });
             return c;
         },
         getGoodsCount(state) {
@@ -93,6 +107,26 @@ var store = new Vuex.Store({
             var o = {};
             state.car.forEach(item => {
                 o[item.id] = item.count;
+            });
+            return o;
+        },
+        getGoodsSelected(state) {
+            var o = {};
+            state.car.forEach(item => {
+                o[item.id] = item.selected;
+            });
+            return o;
+        },
+        getGoodsCountAndAmount(state) {
+            var o = {
+                count: 0, //勾选的数量
+                amount: 0 //勾选的总价
+            }
+            state.car.forEach(item => {
+                if (item.selected) {
+                    o.count += item.count;
+                    o.amount += item.price * item.count;
+                }
             });
             return o;
         }
