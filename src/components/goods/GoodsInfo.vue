@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-22 12:04:19
- * @LastEditTime: 2020-08-24 11:35:23
+ * @LastEditTime: 2020-08-24 12:01:47
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\components\goods\GoodsInfo.vue
@@ -133,9 +133,11 @@ export default {
       var goodsinfo = {
         id: this.id,
         count: this.selectedCount,
-        price: this.goodsinfo.sell_pricee,
+        price: this.goodsinfo.sell_price,
         selected: true,
       };
+      // 调用 store 中的 mutations 来将商品加入购物车
+      this.$store.commit("addToCar", goodsinfo);
     },
     beforeEnter(el) {
       el.style.transform = "translate(0,0)";
