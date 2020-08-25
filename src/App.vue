@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-09 13:47:05
- * @LastEditTime: 2020-08-24 14:26:28
+ * @LastEditTime: 2020-08-25 09:09:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\App.vue
@@ -10,7 +10,11 @@
 <template>
   <div class="app-container">
     <!-- 顶部 Header 区域 -->
-    <mt-header fixed title="中文资讯"></mt-header>
+    <mt-header fixed title="中文资讯">
+      <span slot="left" @click="goBack" v-show="flag">
+        <mt-button icon="back">返回</mt-button>
+      </span>
+    </mt-header>
 
     <!-- 中间的 路由 router-view 区域 -->
     <transition>
@@ -42,6 +46,33 @@
 </template>
 
 <script>
+export default {
+  data() {
+    return {
+      flag: false,
+    };
+  },
+  created() {
+    //因为点击刷新是页面刚进入，没有触发路由的改变，现在设置页面刚进入时判断路由地址
+    this.flag = this.$route.path === "/home" ? false : true;
+  },
+  methods: {
+    goBack() {
+      //点击后退
+      this.$router.go(-1);
+    },
+  },
+  watch: {
+    //路由监听，首页的时候把返回按钮去掉
+    "$route.path": function (newVal) {
+      if (newVal === "/home") {
+        this.flag = false;
+      } else {
+        this.flag = true;
+      }
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
