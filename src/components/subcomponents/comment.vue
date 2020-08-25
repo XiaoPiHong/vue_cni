@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-17 15:30:16
- * @LastEditTime: 2020-08-18 10:08:19
+ * @LastEditTime: 2020-08-25 10:17:00
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\components\subcomponents\comment.vue
@@ -47,7 +47,7 @@ export default {
         .get("api/getcomments.php/" + this.id + "?pageindex=" + this.pageIndex)
         .then((result) => {
           if (result.body.status === 0) {
-            console.log(result.body.message);
+            // console.log(result.body.message);
             // this.comments = result.body.message;
             // 每当获取新评论数据的时候，不要把老数据清空覆盖，而是应该以老数据，拼接上新数据
             this.comments = this.comments.concat(result.body.message);

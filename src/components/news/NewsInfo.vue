@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-17 09:25:13
- * @LastEditTime: 2020-08-17 15:32:30
+ * @LastEditTime: 2020-08-25 10:05:17
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\components\news\NewsInfo.vue
@@ -43,7 +43,7 @@ export default {
       // 获取新闻详情
       this.$http.get("api/getnewsinfo.php?id=" + this.id).then((result) => {
         if (result.body.status === 0) {
-          this.newsinfo = result.body.message;
+          this.newsinfo = result.body.message[0];
         } else {
           Toast("获取新闻失败！");
         }

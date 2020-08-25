@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-11 23:32:14
- * @LastEditTime: 2020-08-17 09:28:04
+ * @LastEditTime: 2020-08-25 10:06:37
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\src\components\news\NewsList.vue
@@ -15,7 +15,7 @@
           <div class="mui-media-body">
             <h1>{{item.title}}</h1>
             <p class="mui-ellipsis">
-              <span>发表时间：{{new Date() | dateFormat }}</span>
+              <span>发表时间：{{item.add_time | dateFormat }}</span>
               <span>点击：{{item.click}}次</span>
             </p>
           </div>
@@ -44,7 +44,6 @@ export default {
         if (result.body.status === 0) {
           // 如果没有失败，应该把数据保存到 data 上
           this.newslist = result.body.message;
-          console.log(this.newslist);
         } else {
           Toast("获取新闻列表失败！");
         }
