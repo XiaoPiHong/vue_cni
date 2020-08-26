@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-08-09 13:47:05
- * @LastEditTime: 2020-08-09 16:46:16
+ * @LastEditTime: 2020-08-26 12:39:19
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_cni\webpack.config.js
@@ -42,7 +42,7 @@ module.exports = {
             }, //处理 scss 文件的loader
             {
                 test: /\.(jpg|png|gif|bmp|jpeg)$/,
-                use: 'url-loader?limit=7631&name=[hash:8]-[name].[ext]'
+                use: 'url-loader?limit=7631&name=images/[hash:8]-[name].[ext]'
             }, // 处理 图片路径的 loader
             // limit 给定的值，是图片的大小，单位是 byte， 如果我们引用的 图片，大于或等于给定的 limit值，则不会被转为base64格式的字符串， 如果 图片小于给定的 limit 值，则会被转为 base64的字符串
             //第一个参数是设置图片是否转为base64字符串;第二个参数是设置图片名称唯一，防止不同文件夹下同名图片显示错误问题,[hash:8]是截取hash值（32位）前8位

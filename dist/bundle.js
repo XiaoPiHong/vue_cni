@@ -42206,13 +42206,13 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB3CAMAAAD/
 /* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "64e2fbce-menu2.png";
+module.exports = __webpack_require__.p + "images/64e2fbce-menu2.png";
 
 /***/ }),
 /* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "a99e8466-menu3.png";
+module.exports = __webpack_require__.p + "images/a99e8466-menu3.png";
 
 /***/ }),
 /* 239 */
@@ -42224,7 +42224,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB3CAMAAAD/
 /* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "28fc050c-menu5.png";
+module.exports = __webpack_require__.p + "images/28fc050c-menu5.png";
 
 /***/ }),
 /* 241 */
